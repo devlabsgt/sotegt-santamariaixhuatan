@@ -16,7 +16,7 @@ function PendingSignInButton({ isPending }: { isPending: boolean }) {
     <Button
       type="submit"
       disabled={isPending}
-      className="text-2xl py-8 flex-1 bg-blue-700"
+      className="text-2xl py-8 flex-1 bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500 text-white"
     >
       {isPending ? "Iniciando..." : "Iniciar Sesión"}
     </Button>
@@ -103,16 +103,18 @@ export function LoginForm() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex justify-start"
+          className="flex shrink-0"
         >
-          <Image
-            src="/svg/logo-2.svg"
-            alt="Afiliaciones CLM"
-            height={100}
-            width={100}
-            className="w-20 md:w-36 h-auto object-contain my-5"
-            priority
-          />
+          <div className="rounded-xl overflow-hidden bg-white dark:bg-neutral-800 my-5 shadow-none">
+            <Image
+              src="/svg/logo-2.svg"
+              alt="Afiliaciones CLM"
+              height={100}
+              width={100}
+              className="w-20 md:w-36 h-auto object-contain dark:brightness-[0.82] dark:contrast-110 shadow-none"
+              priority
+            />
+          </div>
         </motion.div>
 
         <motion.div
@@ -125,7 +127,7 @@ export function LoginForm() {
           }}
         >
           <h1
-            className="font-serif text-2xl md:text-4xl font-bold leading-tight text-left my-5 bg-gradient-to-r from-blue-800 via-blue-400 to-blue-800 bg-[length:200%_auto] text-transparent bg-clip-text animate-text-shine"
+            className="font-serif text-2xl md:text-4xl font-bold leading-tight text-left my-5 bg-gradient-to-r from-blue-800 via-blue-400 to-blue-800 dark:from-blue-400 dark:via-blue-300 dark:to-blue-500 bg-[length:200%_auto] text-transparent bg-clip-text animate-text-shine"
             style={{ fontFamily: "'DM Serif Display', serif" }}
           >
             Sistema de Organización <br /> Territorial Estratégica
@@ -139,7 +141,7 @@ export function LoginForm() {
         transition={{ duration: 0.8, delay: 0.6 }}
         className="flex flex-col items-center mb-8 w-full text-center"
       >
-        <h2 className="text-2xl md:text-4xl font-bold leading-tight bg-gradient-to-r from-blue-800 via-blue-400 to-blue-800 bg-[length:200%_auto] text-transparent bg-clip-text animate-text-shine">
+        <h2 className="text-2xl md:text-4xl font-bold leading-tight bg-gradient-to-r from-blue-800 via-blue-400 to-blue-800 dark:from-blue-400 dark:via-blue-300 dark:to-blue-500 bg-[length:200%_auto] text-transparent bg-clip-text animate-text-shine">
           Santa María Ixhuatán
         </h2>
 
@@ -149,7 +151,7 @@ export function LoginForm() {
       <form
         ref={formRef}
         action={handleFormAction}
-        className="w-full md:max-w-2xl flex flex-col gap-8 text-2xl bg-white md:rounded-xl px-5 py-5 border border-gray-300"
+        className="w-full md:max-w-2xl flex flex-col gap-8 text-2xl bg-white dark:bg-neutral-900 md:rounded-xl px-5 py-5 border border-gray-300 dark:border-neutral-700 shadow-sm dark:shadow-black/20"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -158,7 +160,7 @@ export function LoginForm() {
           className="w-full px-4 flex flex-col gap-4"
         >
           <div className="flex justify-center w-full">
-            <h1 className="text-2xl font-bold text-blue-600 md:text-3xl">
+            <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400 md:text-3xl">
               <Typewriter
                 words={["Iniciar sesión"]}
                 loop={1}
@@ -181,7 +183,7 @@ export function LoginForm() {
           <div>
             <Label
               htmlFor="email"
-              className="text-2xl text-blue-600 mb-2 block"
+              className="text-2xl text-blue-600 dark:text-blue-400 mb-2 block"
             >
               Usuario
             </Label>
@@ -195,14 +197,14 @@ export function LoginForm() {
               }}
               placeholder="Ingrese su usuario"
               required
-              className="text-2xl py-8 px-4"
+              className="text-2xl py-8 px-4 bg-white dark:bg-neutral-950 border-gray-300 dark:border-neutral-700 text-foreground placeholder:text-muted-foreground"
             />
           </div>
 
           <div>
             <Label
               htmlFor="password"
-              className="text-2xl text-blue-600 mb-2 block"
+              className="text-2xl text-blue-600 dark:text-blue-400 mb-2 block"
             >
               Contraseña
             </Label>
@@ -214,12 +216,12 @@ export function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Tu Contraseña"
                 required
-                className="text-2xl py-8 px-4 pr-12"
+                className="text-2xl py-8 px-4 pr-12 bg-white dark:bg-neutral-950 border-gray-300 dark:border-neutral-700 text-foreground placeholder:text-muted-foreground"
               />
               <button
                 type="button"
                 onClick={() => setVerPassword((prev) => !prev)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-neutral-400"
                 aria-label="Mostrar u ocultar contraseña"
               >
                 {verPassword ? <EyeOff size={24} /> : <Eye size={24} />}
